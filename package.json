@@ -25,7 +25,7 @@
   "cloudflare": {
     "bindings": {
       "SOURCEWHALE_API_KEY": {
-        "description": "Your SourceWhale API key. A SourceWhale admin creates it: click your initials (bottom left), then Integrations. Everyone who connects sees what this key can see."
+        "description": "Your SourceWhale API key. A SourceWhale admin creates it: profile icon (bottom left), then Admin, then Settings, then Generate API Key (https://sourcewhale.app/admin#settings). Everyone who connects sees what this key can see."
       },
       "OAUTH_KV": {
         "description": "Storage for sign-in tokens. Keep the suggested name."

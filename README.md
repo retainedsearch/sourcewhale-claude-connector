@@ -59,7 +59,7 @@ step 4).
 | --- | --- | --- |
 | A Cloudflare account | Whoever sets it up | Free. You can create one during step 1. No website or domain needed |
 | A GitHub account | Whoever sets it up | Free, at https://github.com/signup. Cloudflare keeps your copy of the code there |
-| A SourceWhale API key | A SourceWhale admin | In SourceWhale: click your initials (bottom left), then **Integrations**. API access may depend on your SourceWhale plan |
+| A SourceWhale API key | A SourceWhale admin | In SourceWhale: profile icon (bottom left), then **Admin**, then **Settings** (https://sourcewhale.app/admin#settings), then **Generate API Key**. Only SourceWhale admins see this. If your firm already has a key in use elsewhere, check with whoever created it before generating another. API access may depend on your SourceWhale plan |
 | Admin access to Microsoft Entra (Microsoft 365) | Your Microsoft 365 admin | About 10 minutes, to register the sign-in app |
 | A Claude **Owner** on your Team or Enterprise plan | Your Claude Owner | To add the connector for the organisation |
 

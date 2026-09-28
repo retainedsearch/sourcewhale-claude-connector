@@ -3,7 +3,7 @@
 // wrangler.jsonc. Any of them may be missing while setup is in progress, so
 // they are all optional here, and the code checks them before use.
 interface Env {
-  /** Secret. From SourceWhale: initials (bottom left) > Integrations. */
+  /** Secret. From SourceWhale (admins only): Admin > Settings > Generate API Key (sourcewhale.app/admin#settings). */
   SOURCEWHALE_API_KEY?: string;
   /** From the Microsoft Entra app registration (Directory (tenant) ID). */
   MICROSOFT_TENANT_ID?: string;
