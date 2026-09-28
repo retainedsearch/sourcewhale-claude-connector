@@ -204,7 +204,7 @@ function readyPage(origin: string, checks: Check[]): Response {
      <p>For <strong>OAuth client</strong>, choose <strong>Use Claude's published identity</strong>. If connecting fails, switch it to <strong>Register automatically</strong>.</p>
 
      <h2>For everyone else</h2>
-     <p>In Claude, go to <strong>Settings, Connectors</strong>, click <strong>Connect</strong> next to SourceWhale, then sign in with your Microsoft work account.</p>
+     <p>In Claude, go to <strong>Customize, Connectors</strong>, click <strong>Connect</strong> next to SourceWhale, then sign in with your Microsoft work account.</p>
 
      <h2>Current settings</h2>
      ${checkList(checks.filter((c) => c.state === "info"))}

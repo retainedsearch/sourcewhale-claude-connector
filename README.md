@@ -152,7 +152,7 @@ connector address and a summary of the access settings, never keys or IDs.
 
 ### Each person who uses it
 
-1. In Claude, go to **Settings**, then **Connectors**, find **SourceWhale** and click **Connect**.
+1. In Claude, go to **Customize**, then **Connectors**, find **SourceWhale** and click **Connect**.
 2. On "Allow Claude to read SourceWhale?", click **Allow and sign in**.
 3. Sign in with your Microsoft work account.
 4. You return to Claude with SourceWhale connected.
