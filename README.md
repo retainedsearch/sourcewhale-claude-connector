@@ -79,7 +79,7 @@ is sign-in tokens, in Cloudflare storage in your own account.
 Click **Deploy to Cloudflare** at the top of this page. Then:
 
 1. Log in to Cloudflare, or create a free account.
-2. Connect your GitHub account when asked. Cloudflare saves your own copy of the code there.
+2. Connect your GitHub account when asked. GitHub shows a page asking you to authorise Cloudflare: click **Authorize** and you return to Cloudflare. Cloudflare then saves your own copy of the code in your GitHub account.
 3. On the setup form, keep the suggested names. Paste your **SourceWhale API key** into the box for `SOURCEWHALE_API_KEY`.
 4. Click **Create and deploy**. It takes a couple of minutes.
 
