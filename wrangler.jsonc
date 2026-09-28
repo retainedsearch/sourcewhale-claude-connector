@@ -1,0 +1,23 @@
+/**
+ * Cloudflare settings for the SourceWhale connector for Claude.
+ *
+ * You should not need to edit this file. All settings (Microsoft IDs, secrets,
+ * who may connect) are entered in the Cloudflare dashboard under this Worker's
+ * Settings > Variables and Secrets. The server's home page lists exactly what
+ * is needed and checks each value.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sourcewhale-mcp",
+  "main": "src/worker.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+
+  // Storage for sign-in tokens. Cloudflare creates it automatically on first deploy.
+  "kv_namespaces": [{ "binding": "OAUTH_KV" }],
+
+  // Keep settings entered in the Cloudflare dashboard when a new version is deployed.
+  "keep_vars": true,
+
+  "observability": { "enabled": true }
+}

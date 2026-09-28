@@ -1,0 +1,2 @@
+# Asked for by the Deploy to Cloudflare button. Stored as an encrypted Cloudflare secret.
+SOURCEWHALE_API_KEY=

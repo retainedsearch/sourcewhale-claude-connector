@@ -1,0 +1,35 @@
+{
+  "name": "sourcewhale-mcp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "local": "tsx src/local.ts",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "check": "tsc --noEmit",
+    "cf-typegen": "wrangler types --strict-vars=false"
+  },
+  "dependencies": {
+    "@cloudflare/workers-oauth-provider": "1.1.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "agents": "0.24.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.142.0"
+  },
+  "cloudflare": {
+    "bindings": {
+      "SOURCEWHALE_API_KEY": {
+        "description": "Your SourceWhale API key. A SourceWhale admin creates it: click your initials (bottom left), then Integrations. Everyone who connects sees what this key can see."
+      },
+      "OAUTH_KV": {
+        "description": "Storage for sign-in tokens. Keep the suggested name."
+      }
+    }
+  }
+}

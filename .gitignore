@@ -1,0 +1,15 @@
+# Secrets: never commit these
+.env
+.dev.vars
+*.key
+
+# Build and dependency folders
+node_modules/
+.wrangler/
+dist/
+
+# Local tools (GitHub CLI)
+.tools/
+
+# macOS
+.DS_Store

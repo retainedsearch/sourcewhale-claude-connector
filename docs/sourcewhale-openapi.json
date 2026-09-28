@@ -1,0 +1,627 @@
+{
+ "openapi": "3.0.1",
+ "info": {
+  "title": "public-api",
+  "version": "1.0"
+ },
+ "servers": [
+  {
+   "url": "https://sourcewhale.app/public-api"
+  }
+ ],
+ "paths": {
+  "/v1/campaigns/list": {
+   "get": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "parameters": [
+     {
+      "name": "userEmail",
+      "in": "query",
+      "description": "The email address of the user performing the action, will only return SourceWhale campaigns created by this user",
+      "required": false
+     },
+     {
+      "name": "includeMetrics",
+      "in": "query",
+      "description": "Setting this to true will include additional campaign data on usage and responses",
+      "required": false
+     },
+     {
+      "name": "partner",
+      "in": "query",
+      "description": "Partner integration name to filter campaigns by partner integration and enable custom field filtering. This should be used in conjunction with partner.* filters",
+      "required": false
+     },
+     {
+      "name": "partner.*",
+      "in": "query",
+      "description": "Custom field filters for partner integration. Use 'partner.{fieldName}={value}' format to filter campaigns by partner settings applied to the campaign",
+      "required": false
+     }
+    ]
+   }
+  },
+  "/v1/candidates/add": {
+   "post": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "parameters": [
+     {
+      "name": "userEmail",
+      "in": "query",
+      "description": "The email address of the user performing the action",
+      "required": false
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CandidatesAdd"
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/candidates/modify": {
+   "post": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "parameters": [
+     {
+      "name": "userEmail",
+      "in": "query",
+      "description": "The email address of the user performing the action",
+      "required": false
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CandidatesModify"
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/candidates/search": {
+   "get": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "parameters": [
+     {
+      "name": "key",
+      "in": "query",
+      "description": "The key to search for (socialLink, photo, email, phone)",
+      "required": true
+     },
+     {
+      "name": "value",
+      "in": "query",
+      "description": "The value to search for",
+      "required": true
+     },
+     {
+      "name": "userEmail",
+      "in": "query",
+      "description": "The email address of the user performing the action",
+      "required": false
+     }
+    ]
+   }
+  },
+  "/v1/projects/list": {
+   "get": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "parameters": [
+     {
+      "name": "userEmail",
+      "in": "query",
+      "description": "The email address of the user performing the action",
+      "required": false
+     }
+    ]
+   }
+  },
+  "/v1/statistics/dashboard": {
+   "get": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "parameters": [
+     {
+      "name": "from",
+      "in": "query",
+      "description": "Start date for the required statistics (YYYY-MM-DD)",
+      "required": true
+     },
+     {
+      "name": "to",
+      "in": "query",
+      "description": "End date for the required statistics (YYYY-MM-DD)",
+      "required": true
+     }
+    ]
+   }
+  },
+  "/v1/zapier/subscribe": {
+   "post": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ZapierSubscribe"
+       }
+      }
+     }
+    }
+   }
+  },
+  "/v1/zapier/unsubscribe": {
+   "post": {
+    "security": [
+     {
+      "ApiKeyAuthorizer": []
+     }
+    ],
+    "tags": [
+     "v1"
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ZapierUnsubscribe"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "securitySchemes": {
+   "ApiKeyAuthorizer": {
+    "type": "apiKey",
+    "in": "header",
+    "name": "api-key"
+   }
+  },
+  "schemas": {
+   "CandidatesAdd": {
+    "type": "object",
+    "properties": {
+     "candidates": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "salutation": {
+         "type": "string"
+        },
+        "name": {
+         "type": "string"
+        },
+        "firstName": {
+         "type": "string"
+        },
+        "lastName": {
+         "type": "string"
+        },
+        "photo": {
+         "type": "string"
+        },
+        "emails": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "phones": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "company": {
+         "type": "string"
+        },
+        "previousCompany": {
+         "type": "string"
+        },
+        "school": {
+         "type": "string"
+        },
+        "domains": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "role": {
+         "type": "string"
+        },
+        "location": {
+         "type": "string"
+        },
+        "city": {
+         "type": "string"
+        },
+        "state": {
+         "type": "string"
+        },
+        "postcode": {
+         "type": "string"
+        },
+        "country": {
+         "type": "string"
+        },
+        "companyLocation": {
+         "type": "string"
+        },
+        "socialLinks": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "links": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "companyLinkedinUrl": {
+         "type": "string"
+        },
+        "repo": {
+         "type": "string"
+        },
+        "summary": {
+         "type": "string"
+        },
+        "headline": {
+         "type": "string"
+        },
+        "skills": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "industries": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "customVariable": {
+         "type": "string"
+        },
+        "customVariable2": {
+         "type": "string"
+        },
+        "customVariable3": {
+         "type": "string"
+        },
+        "customVariable4": {
+         "type": "string"
+        },
+        "comments": {
+         "type": "string"
+        },
+        "source": {
+         "type": "string"
+        },
+        "foundBy": {
+         "type": "string"
+        },
+        "keywords": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "relationships": {
+         "type": "array",
+         "items": {
+          "type": "string"
+         }
+        },
+        "education": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "school": {
+            "type": "string"
+           },
+           "degree": {
+            "type": "string"
+           },
+           "field": {
+            "type": "string"
+           },
+           "startedAt": {
+            "type": "string"
+           },
+           "endedAt": {
+            "type": "string"
+           },
+           "description": {
+            "type": "string"
+           }
+          }
+         }
+        },
+        "experience": {
+         "type": "array",
+         "items": {
+          "type": "object",
+          "properties": {
+           "role": {
+            "type": "string"
+           },
+           "company": {
+            "type": "string"
+           },
+           "location": {
+            "type": "string"
+           },
+           "startedAt": {
+            "type": "string"
+           },
+           "endedAt": {
+            "type": "string"
+           },
+           "description": {
+            "type": "string"
+           }
+          }
+         }
+        },
+        "dominantRace": {
+         "type": "string"
+        },
+        "gender": {
+         "type": "string"
+        }
+       }
+      }
+     },
+     "campaignId": {
+      "type": "string"
+     },
+     "projectIds": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "sendImmediately": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "candidates"
+    ]
+   },
+   "CandidatesModify": {
+    "type": "object",
+    "properties": {
+     "candidate": {
+      "type": "object",
+      "properties": {
+       "candidateId": {
+        "type": "string"
+       },
+       "salutation": {
+        "type": "string"
+       },
+       "name": {
+        "type": "string"
+       },
+       "firstName": {
+        "type": "string"
+       },
+       "lastName": {
+        "type": "string"
+       },
+       "photo": {
+        "type": "string"
+       },
+       "emails": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "phones": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "company": {
+        "type": "string"
+       },
+       "previousCompany": {
+        "type": "string"
+       },
+       "school": {
+        "type": "string"
+       },
+       "domains": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "role": {
+        "type": "string"
+       },
+       "location": {
+        "type": "string"
+       },
+       "city": {
+        "type": "string"
+       },
+       "state": {
+        "type": "string"
+       },
+       "postcode": {
+        "type": "string"
+       },
+       "country": {
+        "type": "string"
+       },
+       "companyLocation": {
+        "type": "string"
+       },
+       "socialLinks": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "links": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "companyLinkedinUrl": {
+        "type": "string"
+       },
+       "repo": {
+        "type": "string"
+       },
+       "summary": {
+        "type": "string"
+       },
+       "headline": {
+        "type": "string"
+       },
+       "skills": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "industries": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "customVariable": {
+        "type": "string"
+       },
+       "customVariable2": {
+        "type": "string"
+       },
+       "customVariable3": {
+        "type": "string"
+       },
+       "customVariable4": {
+        "type": "string"
+       },
+       "comments": {
+        "type": "string"
+       },
+       "source": {
+        "type": "string"
+       },
+       "foundBy": {
+        "type": "string"
+       },
+       "keywords": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       },
+       "relationships": {
+        "type": "array",
+        "items": {
+         "type": "string"
+        }
+       }
+      }
+     }
+    }
+   },
+   "ZapierSubscribe": {
+    "type": "object",
+    "properties": {
+     "url": {
+      "type": "string"
+     },
+     "subscriptionType": {
+      "type": "string"
+     }
+    }
+   },
+   "ZapierUnsubscribe": {
+    "type": "object",
+    "properties": {
+     "subscriptionId": {
+      "type": "string"
+     }
+    }
+   }
+  }
+ }
+}
